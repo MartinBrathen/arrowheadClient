@@ -142,7 +142,7 @@ private boolean isOpen = false;
           so the communication between consumer and provider can be facilitated.
         */
         
-        ArrowheadService service = new ArrowheadService(service_name, Collections.singleton("json"), metadata);
+        ArrowheadService service = new ArrowheadService(service_name, Collections.singleton("JSON"), metadata);
         
         //Some of the orchestrationFlags the consumer can use, to influence the orchestration process
         Map<String, Boolean> orchestrationFlags = new HashMap<>();
@@ -154,10 +154,10 @@ private boolean isOpen = false;
         orchestrationFlags.put("pingProviders", false);
         
         //When true, the Service Registry will only providers with the same exact metadata map as the consumer
-        orchestrationFlags.put("metadataSearch", true);
+        orchestrationFlags.put("metadataSearch", false);
         
         //When true, the Orchestrator can turn to the Gatekeeper to initiate interCloud orchestration, if the Local Cloud had no adequate provider
-        orchestrationFlags.put("enableInterCloud", true);
+        orchestrationFlags.put("enableInterCloud", false);
         
         //Build the complete service request form from the pieces, and return it
         ServiceRequestForm srf = new ServiceRequestForm.Builder(consumer).requestedService(service).orchestrationFlags(orchestrationFlags).build();
